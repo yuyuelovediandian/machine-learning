@@ -1,0 +1,7 @@
+background:
+  1. 判别式模型
+     在我们试图去估计P(y|x;theta)的概率分布时，应用的模型称为判别式模型。
+     第一种情况：当我们认为  y|x;theta  是normal distribution时，常见的结果如身高，工资等，我们为什么使用的是线性回归模型？也即是y = theta.T * X
+     第二章情况：当我们认为  y|x;theta  是benulli distribution时，常见的结果如是否为垃圾邮件，是否买房等，我们为什么使用的是logistics regression?
+                也即是 y(x) = g(theta.T*x) = 1/(1+exp(-theta.T*x))
+     第三章情况：当我们认为  y|x;theta  是possion distribution时，常见的结果如单位时间内到达的客车数目，单位时间内婴儿的出生数目等典型的计数问题，
