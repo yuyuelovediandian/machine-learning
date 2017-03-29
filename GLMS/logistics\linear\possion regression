@@ -1,7 +1,24 @@
 background:
-  1. 判别式模型
+  判别式模型
      在我们试图去估计P(y|x;theta)的概率分布时，应用的模型称为判别式模型。
      第一种情况：当我们认为  y|x;theta  是normal distribution时，常见的结果如身高，工资等，我们为什么使用的是线性回归模型？也即是y = theta.T * X
-     第二章情况：当我们认为  y|x;theta  是benulli distribution时，常见的结果如是否为垃圾邮件，是否买房等，我们为什么使用的是logistics regression?
+     第二章情况：当我们认为  y|x;theta  是bernoulli distribution时，常见的结果如是否为垃圾邮件，是否买房等，我们为什么使用的是logistics regression?
                 也即是 y(x) = g(theta.T*x) = 1/(1+exp(-theta.T*x))
      第三章情况：当我们认为  y|x;theta  是possion distribution时，常见的结果如单位时间内到达的客车数目，单位时间内婴儿的出生数目等典型的计数问题，
+                也即是 y(x) = g(theta.T*x) = exp(theta.T*x)
+GLMs：
+  考虑一般的回归和分类问题，我们要推导对于x的条件分布，需要满足以下三个假设：
+  1. y|x;θ ~ Exponetial Family(η) 即给定x和theta, y满足η为参数的指数簇分布。
+  2. 给定x,目标是预测T(y),对于大多数的例子，T(y) = y,意味着h(x) = E(y|x)
+  3. 自然参数η和输入x成线性关系：η = θ.T * x
+指数分布簇的一般形式： p(y;η) = b(y) * exp(η.T*T(y)-a(η))
+  迷人的性质：
+      E(y|x) = Δa(η)/Δη
+      D(y|x) = Δ^2 a(η)/Δ^2 η
+  bernoulli distribution 和normal distribution其实也是指数簇分布的特例。
+  对于 bernoulli distribution而言，b(y)=1, η=log(φ/1-φ), a(η)=-log(1-φ) = log(1+exp(η))
+     则hθ(x) = E(y|x;θ) = 1/(1+exp(-η)) = 1/(1+exp(-θ.T*x))
+  对于 normal distribution而言，b(y)=1/(2*PAI)^1/2*exp(-1/2*y^2) η=μ, a(η)= 1/2*η^2
+     则hθ(x) = E(y|x;θ) = η = θ.T*x
+  对于 possion distribution而言，η = log(λ)
+     则 hθ(x) = E(y|x;θ) = λ = exp(η) = exp(θ.T*x)
