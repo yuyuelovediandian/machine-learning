@@ -1,0 +1,11 @@
+Representation Multivariate Distribution
+  1. what is the joint probability distribution on multiplevariables?   Exponential patameters/need to to be represented all?
+  2. Factored representation: chain-rule      polynomial parameters/save cost
+
+
+Two types of GMs
+  1. Directed edges give causality relationships (Bayesian Network or Directed Graphical Model)
+      p(x1,x2,x3,x4) = p(x1) * p(x2|x1) * p(x3|x2) * p(x4|x2,x3)
+  2. Undirected edges simply give correlations between variables (Markov Random Field or Undirected Graphical model):
+      
+  
